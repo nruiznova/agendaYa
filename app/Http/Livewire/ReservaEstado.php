@@ -10,21 +10,19 @@ class ReservaEstado extends Component
     public $reservaId;
     public $estado;
 
-    public function mount($reserva)
+    public function mount($reservaId, $estado)
     {
-        $this->reservaId = $reserva['id'];
-        $this->estado = $reserva['estado'];
+        $this->reservaId = $reservaId;
+        $this->estado = $estado;
     }
 
     public function updatedEstado()
     {
-        \Log::info("Actualizando reserva: {$this->reservaId} a estado {$this->estado}");
-
         $reserva = Reserva::find($this->reservaId);
-
         if ($reserva) {
             $reserva->estado = $this->estado;
             $reserva->save();
+            session()->flash('success', 'Estado actualizado.');
         }
     }
 

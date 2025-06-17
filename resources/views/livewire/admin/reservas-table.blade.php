@@ -17,7 +17,10 @@
                     <td>{{ $reserva->fecha }}</td>
                     <td>{{ $reserva->hora }}</td>
                     <td>
-                        <livewire:reserva-estado :reserva="$reserva->toArray()" wire:key="reserva-{{ $reserva->id }}" />
+                        <livewire:reserva-estado 
+                        :reservaId="$reserva->id" 
+                        :estado="$reserva->estado" 
+                        wire:key="reserva-{{ $reserva->id }}" />
                     </td>
                 </tr>
             @endforeach
