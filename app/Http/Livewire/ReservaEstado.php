@@ -10,26 +10,19 @@ class ReservaEstado extends Component
     public $reservaId;
     public $estado;
 
-    public function mount($reservaId, $estado)
+    public function mount(Reserva $reserva)
     {
-        \Log::info("✅ mount recibido: ID $reservaId, estado $estado");
-
-        $this->reservaId = $reservaId;
-        $this->estado = $estado;
+        $this->reservaId = $reserva->id;
+        $this->estado = $reserva->estado;
     }
 
-    public function updatedEstado()
+    public function updatedEstado($value)
     {
-        \Log::info("✨ updatedEstado ejecutado con valor: " . $this->estado);
-
         $reserva = Reserva::find($this->reservaId);
         if ($reserva) {
-            $reserva->estado = $this->estado;
+            $reserva->estado = $value;
             $reserva->save();
-
-            session()->flash('success', 'Estado actualizado');
-        } else {
-            \Log::error('❌ Reserva no encontrada: ' . $this->reservaId);
+            session()->flash('success', 'Estado actualizado.');
         }
     }
 

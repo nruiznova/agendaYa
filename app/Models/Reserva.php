@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Reserva extends Model
 {
     // Permite asignación masiva para estos campos
-    protected $fillable = ['nombre', 'fecha', 'hora', 'estado'];
+    protected $fillable = ['nombre', 'telefono', 'fecha', 'hora', 'comentario', 'estado'];
     
 }
