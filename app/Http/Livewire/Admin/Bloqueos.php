@@ -25,8 +25,8 @@ class Bloqueos extends Component
             'motivo' => $this->motivo,
         ]);
 
-        $this->reset(['fecha', 'hora', 'motivo']);
         session()->flash('success', 'Bloqueo guardado correctamente.');
+        $this->reset(['fecha', 'hora', 'motivo']);
     }
 
     public function delete($id)

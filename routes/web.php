@@ -7,6 +7,7 @@ use App\Http\Livewire\Admin\Dashboard;
 use App\Http\Controllers\Admin\HorarioController;
 use App\Http\Livewire\Admin\Bloqueos;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,10 +24,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', Dashboard::class)->name('admin.dashboard');
         Route::get('/reservas', [ReservaController::class, 'index'])->name('admin.reservas');        
         Route::get('/horarios', [HorarioController::class, 'index'])->name('admin.horarios');
-        Route::post('/horarios', [HorarioController::class, 'store'])->name('admin.horarios.store');
-        Route::delete('/horarios/{id}', [HorarioController::class, 'destroy'])->name('admin.horarios.destroy');
         Route::get('/bloqueos', Bloqueos::class)->name('admin.bloqueos');
-
+        Route::post('/horarios', [HorarioController::class, 'store'])->name('admin.horarios.store');
+        Route::delete('/horarios/{id}', [HorarioController::class, 'destroy'])->name('admin.horarios.destroy');        
 
         Route::patch('/reservas/{reserva}/estado', [ReservaController::class, 'cambiarEstado'])
             ->name('admin.reservas.estado');
@@ -37,7 +37,7 @@ Route::middleware(['auth'])->group(function () {
     // Ruta de dashboard tradicional
     Route::get('/dashboard', function () {
         return view('dashboard');
-    })->name('dashboard');
+    })->name('dashboard');    
     
 });
 
@@ -51,6 +51,5 @@ Route::post('/reservar', [ReservaController::class, 'store'])->name('reservas.st
 
 // horas disponibles
 Route::get('/horas-disponibles', [ReservaController::class, 'obtenerHorasDisponibles']);
-
 
 
